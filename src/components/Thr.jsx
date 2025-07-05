@@ -1,0 +1,50 @@
+import React from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+// import "./styles.css";
+
+function MyRotatingBox() {
+  const myMesh = React.useRef();
+
+  useFrame(({ clock }) => {
+    const a = clock.getElapsedTime();
+    myMesh.current.rotation.x = a;
+  });
+
+  return (
+    <mesh ref={myMesh}>
+      <boxBufferGeometry />
+      <meshPhongMaterial color="royalblue" />
+    </mesh>
+  );
+}
+
+export default function Thr() {
+  return (
+    <div className="Thr">
+      <Canvas>
+        <MyRotatingBox />
+        <ambientLight intensity={0.1} />
+        <directionalLight />
+      </Canvas>
+    </div>
+  );
+}
+
+// import { Suspense } from 'react'
+// import { Canvas } from '@react-three/fiber'
+// import { Environment } from '@react-three/drei'
+
+// import Kerabotoxanimation from '../../public/Kerabotoxanimation'
+
+// export default function Thr() {
+//   return (
+//     <div className="App">
+//       <Canvas>
+//         <Suspense fallback={null}>
+//           <Kerabotoxanimation />
+//           <Environment preset="sunset" background />
+//         </Suspense>
+//       </Canvas>
+//     </div>
+//   )
+// }
