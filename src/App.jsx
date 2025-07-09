@@ -76,9 +76,9 @@ export default function App() {
   // }, []);
 
   return (
-    <div className="App w-full overflow-x-hidden relative bg-gray-900 text-gray-100">
+    <div className="App w-full overflow-x-hidden relative bg-[#0b111c] text-gray-100">
       {/* 3D Canvas - Positioned between center and right */}
-      {/* <BottleOjb ref={canvasRef} /> */}
+      <BottleOjb reff={canvasRef} />
       {/* Glassmorphic Navbar */}
       <Navbar />
       {/* Main Content */}

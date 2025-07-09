@@ -20,7 +20,7 @@ export default function Model(props) {
         </group>
       </group>
     </group>
-  )
+  );
 }
 
-useGLTF.preload('/kerabotoxanimation.glb')
+useGLTF.preload("/kerabotoxanimation.glb");
