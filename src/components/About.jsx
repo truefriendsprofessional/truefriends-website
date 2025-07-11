@@ -49,6 +49,17 @@ const About = () => {
       id="about"
       className="min-h-[70vh] w-full flex flex-col md:flex-row justify-center items-center bg-[#0b111c] px-6 py-12 transition-colors duration-700 mt-20"
     >
+      {/* <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover z-0 opacity-100 pointer-events-none"
+          style={{ objectFit: 'cover' }}
+        >
+          <source src="/assets/videos/3.mov" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video> */}
       <div className="flex-1 flex justify-center items-center relative min-h-[340px]">
         {/* Carousel of bottles */}
         <div className="relative w-[340px] h-[340px] flex items-center justify-center">

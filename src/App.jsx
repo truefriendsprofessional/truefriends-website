@@ -1,84 +1,84 @@
 import "./App.css";
-// import  { useRef, useEffect, useState } from "react";
 import { useRef } from "react";
-
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-import Kerabotoxanimation from "../public/Kerabotoxanimation";
 import Contact from "./components/Contact";
 import Navbar from "./components/Navbar";
-import BottleOjb from "./components/BottleOjb";
 import WhyUs from "./components/WhyUs";
-import Features from "./components/Features";
 import Offerings from "./components/Offerings";
 import Plans from "./components/Plans";
 import Reviews from "./components/Reviews";
-import About from "./components/About";
+
 import Home from "./components/home";
+import Card from "./components/Cards";
+
+import { projects } from './data';
+
+import { useEffect } from 'react';
+
 gsap.registerPlugin(ScrollTrigger);
 
 export default function App() {
-  const canvasRef = useRef(null);
-  // const [scrollProgress, setScrollProgress] = useState(0);
+  // const canvasRef = useRef(null);
+  const featuresRef = useRef(null);
 
-  // useEffect(() => {
-  //   gsap.timeline({
-  //     scrollTrigger: {
-  //       trigger: "#home",
-  //       start: "top center",
-  //       once: true,
-  //     },
-  //   });
 
-  //   // Navbar gradient
-  //   gsap.from("nav", { background: "rgba(255,255,255,0)", duration: 1.5 });
-  //   gsap.to("nav", {
-  //     background:
-  //       "linear-gradient(90deg, rgba(219,39,119,0.2), rgba(59,130,246,0.2))",
-  //     duration: 1.5,
-  //   });
-  //   const updateScrollProgress = () => {
-  //     const scrollY = window.scrollY;
-  //     const windowHeight = window.innerHeight;
-  //     const docHeight = document.documentElement.scrollHeight - windowHeight;
-  //     setScrollProgress(scrollY / docHeight);
-  //   };
+  useEffect(() => {
+    const container = featuresRef.current;
+    if (!container) return;
 
-  //   window.addEventListener("scroll", updateScrollProgress);
+    // GSAP context to limit selectors to this container
+    const ctx = gsap.context(() => {
+      const cards = gsap.utils.toArray(".stack-card", container);
+      const totalCards = cards.length;
 
-  //   // Canvas movement animation
-  //   ScrollTrigger.create({
-  //     trigger: "#home",
-  //     start: "top top",
-  //     endTrigger: "#about",
-  //     end: "bottom top",
-  //     scrub: true,
-  //     onUpdate: (self) => {
-  //       const progress = self.progress;
+      // Timeline for stacking cards
+      let tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: container,
+          start: "top top",            // pin when section hits top of viewport
+          end: `+=${totalCards * 100 + 50}%`,  // scroll distance (N cards + extra for fade)
+          pin: true,
+          scrub: 1,                   // smooth scrub
+          anticipatePin: 1
+        },
+        defaults: { ease: "none" }    // linear ease for smooth scroll-linked motion:contentReference[oaicite:6]{index=6}
+      });
 
-  //       // More rotation speed & slightly bigger scale
-  //       const xPos = gsap.utils.interpolate(25, -25, progress);
-  //       const scale = gsap.utils.interpolate(1, 0.8, progress); // scale down less aggressively
+      // Fade in the whole section at start
+      tl.from(container, { opacity: 0, duration: 0.2 });
 
-  //       gsap.to(canvasRef.current, {
-  //         x: `${xPos}vw`,
-  //         scale,
-  //         duration: 0.1,
-  //       });
-  //     },
-  //   });
+      // Define an offset to bring cards from below the viewport
+      const offscreenY = window.innerHeight * 1.1; // slightly more than 100% viewport height
 
-  //   return () => {
-  //     ScrollTrigger.getAll().forEach((t) => t.kill());
-  //     window.removeEventListener("scroll", updateScrollProgress);
-  //   };
-  // }, []);
+      // Animate each card entering and scale previous cards
+      cards.forEach((card, i) => {
+        // Card enters from bottom
+        tl.fromTo(card,
+          { y: offscreenY, opacity: 0 },         // start off-screen bottom
+          { y: 0, opacity: 1, duration: 0.8 },
+          "+=0.2" + (i) // start each card tween in sequence (after a small gap)
+        );
+        // If not the first card, scale down all previous cards a bit
+        if (i > 0) {
+          tl.to(cards.slice(0, i),
+            { scale: "-=0.05", duration: 0.8 },   // shrink previous cards by 5%
+            "-=0.8"                              // align scaling with this card's animation
+          );
+        }
+      });
+
+      // Fade out the section after last card is in place
+      tl.to(container, { opacity: 0, duration: 0.4 }, "+=0.2");
+    }, featuresRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <div className="App w-full overflow-x-hidden relative bg-[#0b111c] text-gray-100">
+    <div className="App w-full overflow-x-hidden relative bg-[#0b111c] text-gray-100 main">
       {/* 3D Canvas - Positioned between center and right */}
-      <BottleOjb reff={canvasRef} />
+      {/* <BottleOjb reff={canvasRef} /> */}
       {/* Glassmorphic Navbar */}
       <Navbar />
       {/* Main Content */}
@@ -86,11 +86,25 @@ export default function App() {
         {/* Landing / Hero Section */}
         <Home />
         {/* Other sections remain the same... */}
-        <About />
+        {/* <About /> */}
         {/* Why Us Section */}
         <WhyUs />
+        {/* {
+        projects.map( (project, i) => {
+          const targetScale = 1 - ( (projects.length - i) * 0.05);
+          return <Card key={`p_${i}`} i={i} {...project} progress={scrollYProgress} range={[i * .25, 1]} targetScale={targetScale}/>
+        })
+      } */}
         {/* Features Section with interactive cards */}
-        <Features />
+        {/* <Features2 /> */}
+        <section id="features" ref={featuresRef} className="relative min-h-screen w-full flex flex-col items-center justify-center bg-gray-800 px-6">
+          {/* (Optional heading) */}
+          {/* <h2 className="text-4xl font-bold mb-6 text-center">Features</h2> */}
+          {projects.map((project, i) => (
+            <Card key={i} i={i} {...project} />
+          ))}
+        </section>
+        {/* <Features /> */}
         {/* Offerings Section */}
         <Offerings />
         {/* Plans Section */}

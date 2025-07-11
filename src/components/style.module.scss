@@ -1,0 +1,84 @@
+/* style.module.scss – Updated styles for card stacking */
+.cardContainer {
+  /* Removed sticky positioning and full height, no longer needed */
+  /* position: sticky !important;
+  top: 0;
+  height: 100vh !important; */
+  display: flex;
+  // flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  /* Remove or override position relative, will use absolute in .stack-card */
+  /* position: relative !important;
+  top: -25%; */  
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  height: 500px !important;
+  width: 1000px;
+  border-radius: 25px;
+  padding: 50px;
+  transform-origin: top;
+  /* (Other styling like background color is applied inline) */
+  
+  h2 {
+    text-align: center;
+    margin: 0;
+    font-size: 28px;
+  }
+  .body {
+    display: flex;
+    height: 100% !important;
+    margin-top: 50px;
+    gap: 50px;
+    .description {
+      width: 40%;
+      position: relative;
+      top: 10%;
+      p {
+        font-size: 16px;
+        &::first-letter {
+          font-size: 28px;
+          font-family: 'Title';
+        }
+      }
+      span {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        a {
+          font-size: 12px;
+          text-decoration: underline;
+          cursor: pointer;
+        }
+      }
+    }
+    .imageContainer {
+      position: relative;
+      width: 60%;
+      height: 100% !important;
+      border-radius: 25px;
+      overflow: hidden;
+      .inner {
+        width: 100%;
+        height: 100% !important;
+        /* (No transform here; will be animated via GSAP) */
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+/* New class for stacking behavior */
+.stack-card {
+  position: absolute !important;
+  left: 50%;
+  transform: translateX(-50%);
+}
