@@ -31,7 +31,12 @@ export default function App() {
     const ctx = gsap.context(() => {
       const cards = gsap.utils.toArray(".stack-card", container);
       const totalCards = cards.length;
-
+      gsap.set(cards, {
+        y: 100,
+        opacity: 0,
+        scale: 1,
+        transformOrigin: "center center"
+      });
       // Timeline for stacking cards
       let tl = gsap.timeline({
         scrollTrigger: {
@@ -39,10 +44,19 @@ export default function App() {
           start: "top top",            // pin when section hits top of viewport
           end: `+=${totalCards * 100 + 50}%`,  // scroll distance (N cards + extra for fade)
           pin: true,
-          scrub: 1,                   // smooth scrub
-          anticipatePin: 1
+          scrub: 0.5,                 // less aggressive scrub for better performance
+          anticipatePin: 1,
+          invalidateOnRefresh: true,   // helps with responsive issues
+          onUpdate: (self) => {
+            // Optimize rendering during scroll
+            if (self.progress === 0 || self.progress === 1) {
+              gsap.set(container, { willChange: "auto" });
+            } else {
+              gsap.set(container, { willChange: "transform" });
+            }
+          }
         },
-        defaults: { ease: "none" }    // linear ease for smooth scroll-linked motion:contentReference[oaicite:6]{index=6}
+        defaults: { ease: "power2.out" }  // smoother easing    // linear ease for smooth scroll-linked motion:contentReference[oaicite:6]{index=6}
       });
 
       // Fade in the whole section at start
@@ -53,6 +67,7 @@ export default function App() {
 
       // Animate each card entering and scale previous cards
       cards.forEach((card, i) => {
+        const startTime = i * 0.3;
         // Card enters from bottom
         tl.fromTo(card,
           { y: offscreenY, opacity: 0 },         // start off-screen bottom
@@ -61,57 +76,34 @@ export default function App() {
         );
         // If not the first card, scale down all previous cards a bit
         if (i > 0) {
-          tl.to(cards.slice(0, i),
-            { scale: "-=0.05", duration: 0.8 },   // shrink previous cards by 5%
-            "-=0.8"                              // align scaling with this card's animation
-          );
+          const previousCards = cards.slice(0, i);
+          tl.to(previousCards, {
+            scale: 1 - (i * 0.02), // more subtle scaling
+            duration: 0.6,
+            ease: "power2.out"
+          }, startTime);
         }
       });
-
-      // Fade out the section after last card is in place
-      tl.to(container, { opacity: 0, duration: 0.4 }, "+=0.2");
     }, featuresRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <div className="App w-full overflow-x-hidden relative bg-[#0b111c] text-gray-100 main">
-      {/* 3D Canvas - Positioned between center and right */}
+    <div className="App w-full overflow-x-hidden relative bg-[#A4C3B2] text-gray-100 main">
       {/* <BottleOjb reff={canvasRef} /> */}
-      {/* Glassmorphic Navbar */}
       <Navbar />
-      {/* Main Content */}
-      <div id="scroll-sections" className="relative z-10 pt-0">
-        {/* Landing / Hero Section */}
+      <div id="scroll-sections" className="relative z-10 pt-0 ">
         <Home />
-        {/* Other sections remain the same... */}
         {/* <About /> */}
-        {/* Why Us Section */}
         <WhyUs />
-        {/* {
-        projects.map( (project, i) => {
-          const targetScale = 1 - ( (projects.length - i) * 0.05);
-          return <Card key={`p_${i}`} i={i} {...project} progress={scrollYProgress} range={[i * .25, 1]} targetScale={targetScale}/>
-        })
-      } */}
-        {/* Features Section with interactive cards */}
-        {/* <Features2 /> */}
-        <section id="features" ref={featuresRef} className="relative min-h-screen w-full flex flex-col items-center justify-center bg-gray-800 px-6">
-          {/* (Optional heading) */}
-          {/* <h2 className="text-4xl font-bold mb-6 text-center">Features</h2> */}
+        <section id="features" ref={featuresRef} className="relative h-screen w-full flex flex-col items-center justify-center bg-gradient-to-b from-[#A4C3B2]  to-[#DED6D1] -mt-[100vh] ">
           {projects.map((project, i) => (
             <Card key={i} i={i} {...project} />
           ))}
         </section>
-        {/* <Features /> */}
-        {/* Offerings Section */}
         <Offerings />
-        {/* Plans Section */}
-        <Plans />
-        {/* Reviews Section with testimonials */}
-        <Reviews />
-        {/* Contact Section */}
+        {/* <Plans /> */}
         <Contact />
       </div>
     </div>

@@ -4,7 +4,7 @@ import styles from './style.module.scss';
 const Card = ({ i, title, description, src, url, color }) => {
   return (
     <div 
-      className={`${styles.card} stack-card mt-[20vh] mb-[20vh]`} 
+      className={`${styles.card} stack-card mt-30 mb-[30vh]`} 
       style={{ backgroundColor: color, top: `calc(-5vh + ${25 * i}px)` }}
     >
       <h2>{title}</h2>

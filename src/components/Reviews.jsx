@@ -1,31 +1,180 @@
 import React from 'react'
 
+// Reviews data array
+const reviewsData = [
+  {
+    id: 1,
+    name: "Sarah Johnson",
+    location: "Beverly Hills Salon",
+    rating: 5,
+    review: "Absolutely love these products! My clients' hair looks amazing and feels so soft after treatment.",
+    avatar: "./public/assets/1.png"
+  },
+  {
+    id: 2,
+    name: "Mike Chen",
+    location: "Urban Hair Studio",
+    rating: 5,
+    review: "Best hair care products I've used in my 15 years as a stylist. Highly recommend!",
+    avatar: "./public/assets/5.png"
+  },
+  {
+    id: 3,
+    name: "Emily Rodriguez",
+    location: "Luxe Hair Boutique",
+    rating: 5,
+    review: "The keratin shampoo is a game-changer. My clients keep asking what I'm using!",
+    avatar: "./public/assets/7.png"
+  },
+  {
+    id: 4,
+    name: "David Thompson",
+    location: "Elite Hair Care",
+    rating: 5,
+    review: "Professional quality products that deliver consistent results every time.",
+    avatar: "./public/assets/13.png"
+  },
+  {
+    id: 5,
+    name: "Lisa Park",
+    location: "Modern Hair Gallery",
+    rating: 5,
+    review: "My salon has seen a 30% increase in customer satisfaction since using these products.",
+    avatar: "./public/assets/1.png"
+  },
+  {
+    id: 6,
+    name: "James Wilson",
+    location: "Premier Salon",
+    rating: 5,
+    review: "The styling wax gives perfect hold without making hair look greasy. Love it!",
+    avatar: "./public/assets/5.png"
+  },
+  {
+    id: 7,
+    name: "Amanda Foster",
+    location: "Trendy Cuts",
+    rating: 5,
+    review: "Natural ingredients that actually work. My clients notice the difference immediately.",
+    avatar: "./public/assets/7.png"
+  },
+  {
+    id: 8,
+    name: "Robert Lee",
+    location: "Style Masters",
+    rating: 5,
+    review: "Excellent value for money. These products compete with the most expensive brands.",
+    avatar: "./public/assets/13.png"
+  }
+];
+
+// Star Rating Component
+const StarRating = ({ rating }) => {
+  return (
+    <div className="flex items-center gap-1 mb-2">
+      {[...Array(5)].map((_, index) => (
+        <svg
+          key={index}
+          className={`w-4 h-4 ${index < rating ? 'text-yellow-400' : 'text-gray-300'}`}
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+        </svg>
+      ))}
+    </div>
+  );
+};
+
+// Review Card Component
+const ReviewCard = ({ review }) => {
+  return (
+    <div 
+      className="flex-shrink-0 w-80 mx-4 p-6 rounded-2xl shadow-lg"
+      style={{ 
+        backgroundColor: '#DED6D1',
+        border: '2px solid #EEC6CA'
+      }}
+    >
+      <div className="flex items-center mb-4">
+        <img
+          src={review.avatar}
+          alt={review.name}
+          className="w-12 h-12 rounded-full object-cover mr-4"
+          style={{ border: '2px solid #6B9080' }}
+        />
+        <div>
+          <h4 className="font-bold text-lg" style={{ color: '#6B9080' }}>
+            {review.name}
+          </h4>
+          <p className="text-sm text-gray-600">{review.location}</p>
+        </div>
+      </div>
+      <StarRating rating={review.rating} />
+      <p className="text-gray-700 text-sm leading-relaxed italic">
+        "{review.review}"
+      </p>
+    </div>
+  );
+};
+
 const Reviews = () => {
   return (
     <section
-          id="reviews"
-          className="min-h-screen w-full flex flex-col justify-center items-center bg-gray-900 px-6 text-center"
+      id="reviews"
+      className="w-full py-20 overflow-hidden"
+      style={{ 
+        background: 'linear-gradient(0deg, #6B9080 0%, #A4C3B2 100%)',
+        fontFamily: 'Roboto, sans-serif'
+      }}
+    >
+      <div className="text-center mb-12">
+        <h2 
+          className="text-4xl font-bold mb-4 text-white"
+          style={{ fontFamily: 'Roboto, sans-serif' }}
         >
-          <h2 className="text-4xl font-bold mb-6">What Salon Owners Say</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {[1, 2].map((i) => (
-              <div
-                key={i}
-                className="p-6 bg-gray-800/60 rounded-lg transform hover:scale-105 transition"
-              >
-                <img
-                  src={`../assets/bg.jpg`}
-                  alt="Owner"
-                  className="rounded-full mx-auto mb-4"
-                />
-                <blockquote className="italic opacity-80 mb-2">
-                  “Fantastic shine and manageable hair every time!”
-                </blockquote>
-                <cite className="opacity-70">— Owner {i}, City</cite>
-              </div>
-            ))}
-          </div>
-        </section>
+          What Salon Owners Say
+        </h2>
+        <p className="text-lg text-white/90 max-w-2xl mx-auto">
+          Trusted by hundreds of professional salons and stylists worldwide
+        </p>
+      </div>
+
+      {/* Marquee Container */}
+      <div className="relative">
+        {/* Moving Strip */}
+        <div className="flex animate-marquee">
+          {/* First set of reviews */}
+          {reviewsData.map((review) => (
+            <ReviewCard key={review.id} review={review} />
+          ))}
+          {/* Duplicate set for seamless loop */}
+          {reviewsData.map((review) => (
+            <ReviewCard key={`duplicate-${review.id}`} review={review} />
+          ))}
+        </div>
+      </div>
+
+      {/* CSS for marquee animation */}
+      <style jsx>{`
+        @keyframes marquee {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        
+        .animate-marquee {
+          animation: marquee 30s linear infinite;
+        }
+        
+        .animate-marquee:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
+    </section>
   )
 }
 
