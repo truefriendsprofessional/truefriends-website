@@ -1,0 +1,71 @@
+/* Performance optimizations for 3D Marquee */
+.marquee-container {
+  contain: layout style paint;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.marquee-item {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+.marquee-grid {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+/* Optimize images for better performance */
+.review-avatar {
+  transform: translateZ(0);
+  image-rendering: optimizeSpeed;
+}
+
+/* Reduce paint operations */
+.grid-line {
+  contain: strict;
+  will-change: auto;
+}
+
+/* Hardware acceleration hints */
+.hardware-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Mobile responsive improvements */
+@media (max-width: 768px) {
+  .marquee-container {
+    height: 500px !important;
+    padding: 0 1rem;
+  }
+  
+  .marquee-grid {
+    gap: 1rem !important;
+    left: -200px !important;
+    top: 12rem !important;
+  }
+  
+  .marquee-item {
+    gap: 1rem !important;
+  }
+  
+  
+}
+
+/* Tablet responsive improvements */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .marquee-container {
+    height: 550px !important;
+  }
+}
+
+/* Desktop improvements */
+@media (min-width: 1025px) {
+  .marquee-container {
+    height: 600px !important;
+  }
+}

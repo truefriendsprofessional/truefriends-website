@@ -8,6 +8,11 @@
   // flex-direction: column;
   align-items: center;
   justify-content: center;
+  
+  // Responsive adjustments
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
 }
 
 .card {
@@ -29,25 +34,66 @@
   /* Enable hardware acceleration */
   transform: translateZ(0);
   
+  // Responsive adjustments
+  @media (max-width: 1024px) {
+    width: 90vw;
+    max-width: 800px;
+    padding: 2rem;
+  }
+  
+  @media (max-width: 768px) {
+    width: 95vw;
+    max-width: 400px;
+    height: 400px !important;
+    padding: 1.5rem;
+  }
+  
   h2 {
     text-align: center;
     margin: 0;
     font-size: 28px;
+    
+    @media (max-width: 768px) {
+      font-size: 20px;
+    }
   }
+
   .body {
     display: flex;
     height: 100% !important;
     margin-top: 50px;
     gap: 50px;
+    
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    
     .description {
       width: 40%;
       position: relative;
       top: 10%;
+      
+      @media (max-width: 768px) {
+        width: 100%;
+        top: 0;
+      }
+      
       p {
         font-size: 16px;
+        
+        @media (max-width: 768px) {
+          font-size: 14px;
+        }
+        
         &::first-letter {
           font-size: 28px;
           font-family: 'Title';
+          
+          @media (max-width: 768px) {
+            font-size: 20px;
+          }
         }
       }
       span {
@@ -61,6 +107,7 @@
         }
       }
     }
+    
     .imageContainer {
       position: relative;
       width: 60%;
@@ -68,16 +115,33 @@
       border-radius: 25px;
       overflow: hidden;
       transform: translateZ(0);
+      backface-visibility: hidden;
+      contain: layout style paint; // CSS containment for better performance
+      
+      @media (max-width: 768px) {
+        width: 100%;
+        height: 200px !important;
+      }
+      
       .inner {
         width: 100%;
         height: 100% !important;
         transform: translateZ(0);
+        backface-visibility: hidden;
         /* (No transform here; will be animated via GSAP) */
       }
       video, img {
         width: 100%;
         height: 100%;
         object-fit: cover;
+        transform: translateZ(0); // Hardware acceleration
+        backface-visibility: hidden;
+        image-rendering: optimizeSpeed; // Optimize image rendering
+        
+        // Optimize video playback
+        &[data-video="true"] {
+          will-change: auto; // Only use will-change when necessary
+        }
       }
     }
   }
@@ -91,4 +155,14 @@
    /* Optimize stacking performance */
   isolation: isolate;
   contain: layout style paint;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  
+  // Add smooth transitions for better UX
+  transition: transform 0.1s ease-out;
+  
+  // Optimize for touch devices
+  @media (hover: none) and (pointer: coarse) {
+    transition: none; // Disable transitions on touch devices
+  }
 }

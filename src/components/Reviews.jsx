@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { ThreeDMarquee } from './ui/3d-marquee';
 // Reviews data array
 const reviewsData = [
   {
@@ -8,7 +8,7 @@ const reviewsData = [
     location: "Beverly Hills Salon",
     rating: 5,
     review: "Absolutely love these products! My clients' hair looks amazing and feels so soft after treatment.",
-    avatar: "./public/assets/1.png"
+    avatar: "src/assets/images/1.png"
   },
   {
     id: 2,
@@ -16,7 +16,7 @@ const reviewsData = [
     location: "Urban Hair Studio",
     rating: 5,
     review: "Best hair care products I've used in my 15 years as a stylist. Highly recommend!",
-    avatar: "./public/assets/5.png"
+    avatar: "src/assets/images/5.png"
   },
   {
     id: 3,
@@ -24,7 +24,7 @@ const reviewsData = [
     location: "Luxe Hair Boutique",
     rating: 5,
     review: "The keratin shampoo is a game-changer. My clients keep asking what I'm using!",
-    avatar: "./public/assets/7.png"
+    avatar: "src/assets/images/7.png"
   },
   {
     id: 4,
@@ -32,7 +32,7 @@ const reviewsData = [
     location: "Elite Hair Care",
     rating: 5,
     review: "Professional quality products that deliver consistent results every time.",
-    avatar: "./public/assets/13.png"
+    avatar: "src/assets/images/13.png"
   },
   {
     id: 5,
@@ -40,7 +40,7 @@ const reviewsData = [
     location: "Modern Hair Gallery",
     rating: 5,
     review: "My salon has seen a 30% increase in customer satisfaction since using these products.",
-    avatar: "./public/assets/1.png"
+    avatar: "src/assets/images/1.png"
   },
   {
     id: 6,
@@ -48,7 +48,7 @@ const reviewsData = [
     location: "Premier Salon",
     rating: 5,
     review: "The styling wax gives perfect hold without making hair look greasy. Love it!",
-    avatar: "./public/assets/5.png"
+    avatar: "src/assets/images/5.png"
   },
   {
     id: 7,
@@ -56,7 +56,7 @@ const reviewsData = [
     location: "Trendy Cuts",
     rating: 5,
     review: "Natural ingredients that actually work. My clients notice the difference immediately.",
-    avatar: "./public/assets/7.png"
+    avatar: "src/assets/images/7.png"
   },
   {
     id: 8,
@@ -64,7 +64,7 @@ const reviewsData = [
     location: "Style Masters",
     rating: 5,
     review: "Excellent value for money. These products compete with the most expensive brands.",
-    avatar: "./public/assets/13.png"
+    avatar: "src/assets/images/13.png"
   }
 ];
 
@@ -89,19 +89,14 @@ const StarRating = ({ rating }) => {
 // Review Card Component
 const ReviewCard = ({ review }) => {
   return (
-    <div 
-      className="flex-shrink-0 w-80 mx-4 p-6 rounded-2xl shadow-lg"
-      style={{ 
-        backgroundColor: '#DED6D1',
-        border: '2px solid #EEC6CA'
-      }}
+    <div
+      className="flex-shrink-0 w-80 mx-4 p-6 rounded-2xl shadow-lg bg-[#FAFAFA] border-2 border-[#EEC970]/30"
     >
       <div className="flex items-center mb-4">
         <img
           src={review.avatar}
           alt={review.name}
-          className="w-12 h-12 rounded-full object-cover mr-4"
-          style={{ border: '2px solid #6B9080' }}
+          className="w-12 h-12 rounded-full object-cover mr-4 border-2 border-[#EEC970]"
         />
         <div>
           <h4 className="font-bold text-lg" style={{ color: '#6B9080' }}>
@@ -123,13 +118,13 @@ const Reviews = () => {
     <section
       id="reviews"
       className="w-full py-20 overflow-hidden"
-      style={{ 
-        background: 'linear-gradient(0deg, #6B9080 0%, #A4C3B2 100%)',
+      style={{
+        background: 'linear-gradient(0deg, #B3A18A 0%, #A4C3B2 50%, #B3A18A 100%)',
         fontFamily: 'Roboto, sans-serif'
       }}
     >
       <div className="text-center mb-12">
-        <h2 
+        <h2
           className="text-4xl font-bold mb-4 text-white"
           style={{ fontFamily: 'Roboto, sans-serif' }}
         >
@@ -156,7 +151,7 @@ const Reviews = () => {
       </div>
 
       {/* CSS for marquee animation */}
-      <style jsx>{`
+      <style >{`
         @keyframes marquee {
           0% {
             transform: translateX(0);
@@ -170,9 +165,7 @@ const Reviews = () => {
           animation: marquee 30s linear infinite;
         }
         
-        .animate-marquee:hover {
-          animation-play-state: paused;
-        }
+        
       `}</style>
     </section>
   )
