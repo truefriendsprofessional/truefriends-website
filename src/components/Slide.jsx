@@ -73,8 +73,9 @@ function AnimatedBottle() {
     if (!bottleRef.current) return;
 
     // Initial position - start in first section (left side, top of viewport)
-    scrollPositionRef.current = { x: -1.8, y: 4 };
-    gsap.set(bottleRef.current.position, { x: -1.8, y: 4, z: 0.5 });
+    const initialX = isMobile ? -0.9 : -1.8;
+    scrollPositionRef.current = { x: initialX, y: 4 };
+    gsap.set(bottleRef.current.position, { x: initialX, y: 4, z: 0.5 });
     gsap.set(bottleRef.current.rotation, { y: 0 });
 
     // Create a smooth scroll-triggered animation and store the reference
@@ -94,7 +95,10 @@ function AnimatedBottle() {
           const sectionProgress = progress * 6.25
 
           // Section 1 - Left side, top area (visible in first section)
-          targetX = gsap.utils.interpolate(4, -1.5, sectionProgress);
+          // Reduce horizontal movement on mobile
+          const startX = isMobile ? 2 : 4;
+          const endX = isMobile ? -0.8 : -1.5;
+          targetX = gsap.utils.interpolate(startX, endX, sectionProgress);
           targetY = gsap.utils.interpolate(4.5, 3.5, sectionProgress); // Start higher, move down faster
           // targetY = 3
           targetZ = gsap.utils.interpolate(-3, 0.5, sectionProgress); // Zoom in effect
@@ -108,7 +112,9 @@ function AnimatedBottle() {
           // Section 1 - Left side, top area (visible in first section)
           const sectionProgress = (progress - 0.16) * 11.11;
 
-          targetX = -1.5
+          // Reduce horizontal movement on mobile
+          const posX = isMobile ? -0.8 : -1.5;
+          targetX = posX;
           targetY = gsap.utils.interpolate(3.5, 2.5, sectionProgress); // Faster vertical movement
           targetZ = gsap.utils.interpolate(0.5, 1, sectionProgress); // Slight zoom out
           targetRotY = gsap.utils.interpolate(0, 0.5, sectionProgress);
@@ -119,7 +125,10 @@ function AnimatedBottle() {
           // Section 1 - Left side, top area (visible in first section)
           const sectionProgress = (progress - 0.25) * 12.5;
 
-          targetX = gsap.utils.interpolate(-1.5, 1.2, sectionProgress);
+          // Reduce horizontal movement on mobile
+          const startX = isMobile ? -0.8 : -1.5;
+          const endX = isMobile ? 0.6 : 1.2;
+          targetX = gsap.utils.interpolate(startX, endX, sectionProgress);
           targetY = gsap.utils.interpolate(2.5, 1.5, sectionProgress); // Start higher, move down faster
           targetZ = gsap.utils.interpolate(1, 0.5, sectionProgress); // Zoom in for transition
           targetRotY = gsap.utils.interpolate(0.5, Math.PI, sectionProgress);
@@ -130,8 +139,10 @@ function AnimatedBottle() {
           // Section 2 - Right side, center area (visible in second section)  
           const sectionProgress = (progress - 0.33) / 0.165;
 
-
-          targetX = gsap.utils.interpolate(1.2, 1.5, sectionProgress);
+          // Reduce horizontal movement on mobile
+          const startX = isMobile ? 0.6 : 1.2;
+          const endX = isMobile ? 0.8 : 1.5;
+          targetX = gsap.utils.interpolate(startX, endX, sectionProgress);
           targetY = gsap.utils.interpolate(1.5, 0.1, sectionProgress); // Faster vertical movement
           targetZ = gsap.utils.interpolate(0.5, 1.5, sectionProgress); // Zoom out effect
           targetRotY = Math.PI;
@@ -142,8 +153,9 @@ function AnimatedBottle() {
           // Section 2 - Right side, center area (visible in second section)
           const sectionProgress = (progress - 0.5) * 10;
 
-
-          targetX = gsap.utils.interpolate(1.5, 0, sectionProgress);
+          // Reduce horizontal movement on mobile
+          const startX = isMobile ? 0.8 : 1.5;
+          targetX = gsap.utils.interpolate(startX, 0, sectionProgress);
           targetY = gsap.utils.interpolate(0.1, -0.2, sectionProgress); // Faster vertical movement
           targetZ = gsap.utils.interpolate(1.5, 7, sectionProgress); // Zoom in for final transition
           // targetRotY = gsap.utils.interpolate(Math.PI, 0.2, sectionProgress);
@@ -155,8 +167,9 @@ function AnimatedBottle() {
           // Section 3 - Left side, bottom area (visible in third section)
           const sectionProgress = (progress - 0.6) * 5;
 
-
-          targetX = gsap.utils.interpolate(0, -1.8, sectionProgress);
+          // Reduce horizontal movement on mobile
+          const endX = isMobile ? 0.9 : 1.8;
+          targetX = gsap.utils.interpolate(0, endX, sectionProgress);
           targetY = gsap.utils.interpolate(-0.2, -3.8, sectionProgress); // Move down much faster
           targetZ = gsap.utils.interpolate(7, -1.5, sectionProgress); // Final zoom out
           targetRotY = gsap.utils.interpolate(Math.PI, Math.PI, sectionProgress);
@@ -165,7 +178,9 @@ function AnimatedBottle() {
         }
         else {
           // remain in last section no change
-          targetX = -1.8;
+          // Reduce horizontal movement on mobile
+          const finalX = isMobile ? 0.9 : 1.8;
+          targetX = finalX;
           targetY = -3.8;
           targetZ = -1.5;
           targetRotY = Math.PI;
@@ -233,7 +248,7 @@ function AnimatedBottle() {
         scrollTrigger.kill();
       }
     };
-  }, []);
+  }, [isMobile]);
 
   return (
     <group
