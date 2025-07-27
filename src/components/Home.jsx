@@ -141,7 +141,7 @@ const Home = () => {
                   style={{ filter: 'brightness(0.95) contrast(1.05) saturate(1.1)' }}
 
                 >
-                  <source src="/assets/videos/logoFlash.mp4" type="video/mp4" />
+                  <source src="./assets/videos/logoFlash.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
 

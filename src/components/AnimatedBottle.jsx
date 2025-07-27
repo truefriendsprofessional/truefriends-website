@@ -7,7 +7,7 @@ import * as THREE from 'three';
 const AnimatedBottle = ({ scale = 1, ...props }) => {
     const bottleRef = useRef();
     const shadowRef = useRef();
-    const { nodes, materials } = useGLTF('/bottle_final_with_names.glb');
+    const { nodes, materials } = useGLTF('./bottle_final_with_names.glb');
 
     // Animation frame updates - only for subtle floating effects
     useFrame((state) => {
@@ -74,5 +74,5 @@ const AnimatedBottle = ({ scale = 1, ...props }) => {
 };
 
 export default AnimatedBottle;
-useGLTF.preload('/bottle_final_with_names.glb');
+useGLTF.preload('./bottle_final_with_names.glb');
 

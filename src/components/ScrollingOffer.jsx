@@ -2,6 +2,7 @@
 import React from "react";
 // import { StickyScroll } from "./stickey-scroll-reveal";
 import { StickyScroll } from "./ui/stickey-scroll-reveal";
+import image1 from "../assets/images/1.png";
 
 
 
@@ -24,7 +25,7 @@ const content = [
         content: (
             <div className="flex h-full w-full items-center justify-center text-white">
                 <img
-                    src="../assets/images/1.png"
+                    src={image1}
                     width={300}
                     height={300}
                     className="h-full w-full object-cover"

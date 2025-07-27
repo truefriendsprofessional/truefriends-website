@@ -57,7 +57,7 @@ const About = () => {
           className="absolute inset-0 w-full h-full object-cover z-0 opacity-100 pointer-events-none"
           style={{ objectFit: 'cover' }}
         >
-          <source src="/assets/videos/3.mov" type="video/mp4" />
+          <source src="./assets/videos/healing2.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video> */}
       <div className="flex-1 flex justify-center items-center relative min-h-[340px]">

@@ -8,7 +8,7 @@ import React, { forwardRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
 const Model = forwardRef((props, ref) => {
-  const { nodes, materials } = useGLTF('/bottle_final_with_names.glb')
+  const { nodes, materials } = useGLTF('./bottle_final_with_names.glb')
   return (
     <group ref={ref} {...props} dispose={null}>
       <mesh geometry={nodes.backLable.geometry} material={materials.Nanoplast} position={[0, 0, -0.01]} />
@@ -22,4 +22,4 @@ const Model = forwardRef((props, ref) => {
 })
 export default Model
 Model.displayName = 'Bottle_final_with_names'
-useGLTF.preload('/bottle_final_with_names.glb')
+useGLTF.preload('./bottle_final_with_names.glb')

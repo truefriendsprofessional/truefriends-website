@@ -5,17 +5,17 @@ const features = [
   {
     title: 'Gentle on Scalp, No Fumes',
     desc: 'Experience the difference with our unique formula that nourishes your scalp and hair without harsh chemicals or fumes. Perfect for sensitive skin and daily use.',
-    video: '/assets/videos/girl washing hair.mp4',
+    video: './assets/videos/girl washing hair.mp4',
   },
   {
     title: 'No Harsh Chemicals',
     desc: 'Our shampoo is free from sulfates, parabens, and other harmful chemicals. Enjoy a clean, healthy scalp and vibrant hair.',
-    video: '/assets/videos/noChemical.mp4',
+    video: './assets/videos/noChemical.mp4',
   },
   {
     title: 'Healing & Rejuvenating',
     desc: 'Infused with natural ingredients to help heal and rejuvenate your scalp and hair. See the shine and feel the softness after every wash.',
-    video: '/assets/videos/healing.mp4',
+    video: './assets/videos/healing.mp4',
   },
 ]
 

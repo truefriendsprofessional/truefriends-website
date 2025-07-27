@@ -134,7 +134,7 @@ const Card = ({ i, title, description, src, url, color, features }) => {
                             backfaceVisibility: 'hidden'
                           }}
                           >
-                          <source src={`/assets/videos/${src}`} type="video/mp4" />
+                          <source src={`./assets/videos/${src}`} type="video/mp4" />
                           Your browser does not support the video tag.
                           </video>
                           
