@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Features2 = () => {
   const featuresRef = useRef(null);
-  
+
   // Memoize projects to prevent unnecessary re-renders
   const memoizedProjects = useMemo(() => projects, []);
 
@@ -28,19 +28,19 @@ const Features2 = () => {
     const initTimer = setTimeout(() => {
       // Check if we're on mobile/tablet first
       const isMobile = window.innerWidth < 768;
-      
+
       // Only run stacking animation on desktop
       if (!isMobile) {
         // GSAP context to limit selectors to this container
         const ctx = gsap.context(() => {
           const cards = gsap.utils.toArray(".stack-card", container);
           const totalCards = cards.length;
-          
+
           if (cards.length === 0) {
             console.warn("No cards found for Features2 animation");
             return;
           }
-          
+
           // Optimize initial setup
           gsap.set(cards, {
             y: 0,
@@ -55,7 +55,7 @@ const Features2 = () => {
             y: window.innerHeight * 0.8, // Position cards lower in viewport
             opacity: 0
           });
-          
+
           // Timeline for stacking cards
           let tl = gsap.timeline({
             scrollTrigger: {
@@ -74,7 +74,7 @@ const Features2 = () => {
               onUpdate: (self) => {
                 const container = featuresRef.current;
                 if (!container) return;
-                
+
                 if (self.progress < 0.01 || self.progress > 0.99) {
                   gsap.set(container, { willChange: "auto" });
                 }
@@ -101,12 +101,12 @@ const Features2 = () => {
               // Desktop animation - full stacking effect
               tl.fromTo(card,
                 { y: offscreenY, opacity: 0, scale: 0.8 },
-                { 
-                  y: 0, 
-                  opacity: 1, 
+                {
+                  y: 0,
+                  opacity: 1,
                   scale: 1,
                   duration: 1.2,
-                  ease: "power1.out" 
+                  ease: "power1.out"
                 },
                 startTime
               );
@@ -121,7 +121,7 @@ const Features2 = () => {
               }, startTime + 0.1);
             }
           });
-          
+
           console.log("Features2 timeline created with", cards.length, "cards");
         }, featuresRef);
 
@@ -135,24 +135,24 @@ const Features2 = () => {
   }, []);
   return (
     <section id="features"
-    ref={featuresRef}
-    className="relative w-full flex flex-col items-center justify-start pt-20 h-auto min-h-screen md:h-screen md:min-h-screen"
-    style={{
-            fontFamily: "'Roboto','Poppins', 'Segoe UI', Arial, sans-serif",
-            backgroundImage: `url(${background})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            willChange: 'transform' // Add performance hint
-          }}
+      ref={featuresRef}
+      className="relative w-full flex flex-col items-center justify-start pt-20 h-auto min-h-screen md:h-screen md:min-h-screen"
+      style={{
+        fontFamily: "'Roboto','Poppins', 'Segoe UI', Arial, sans-serif",
+        backgroundImage: `url(${background})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        willChange: 'transform' // Add performance hint
+      }}
     >
       {/* Desktop: Absolute positioned cards for stacking */}
-      <div className="hidden md:block relative w-full h-full">
+      <div className="hidden md:flex justify-center  relative  w-full h-full">
         {memoizedProjects.map((project, i) => (
           <Card key={`card-${i}-${project.title}`} i={i} {...project} />
         ))}
       </div>
-      
+
       {/* Mobile: Normal flow layout */}
       <div className="block md:hidden w-full space-y-6 pb-20">
         {memoizedProjects.map((project, i) => (

@@ -49,7 +49,7 @@ const Card = ({ i, title, description, src, url, color, features }) => {
   return (
     <div 
       ref={cardRef}
-      className={`${styles.card} ${!isMobile ? 'stack-card' : ''} mt-30 mb-[30vh] backdrop-blur-sm relative overflow-hidden transform-gpu border-4 border-green-500`} 
+      className={`${styles.card} ${!isMobile ? 'stack-card' : ''} mt-30 font-[roboto] mb-[30vh] backdrop-blur-sm relative overflow-hidden transform-gpu border-4 border-green-500`} 
       style={{ 
         background: color,
         top: !isMobile ? `calc(-5vh + ${25 * i}px)` : 'auto',
@@ -96,7 +96,7 @@ const Card = ({ i, title, description, src, url, color, features }) => {
               </div>
             )}
             
-            <span className="flex items-center gap-2 group">
+            {/* <span className="flex items-center gap-2 group">
               <a 
                 href={url} 
                 className="text-[#EEC970] hover:text-[#3FA6DA] transition-colors text-sm font-medium tracking-wide uppercase"
@@ -115,7 +115,7 @@ const Card = ({ i, title, description, src, url, color, features }) => {
                   fill="#EEC970"
                 />
               </svg>
-            </span>
+            </span> */}
           </div>
           
           {/* Video container */}
