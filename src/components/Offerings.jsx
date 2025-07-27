@@ -1,6 +1,12 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import keratinImg from "../assets/images/keratin6.jpg";
+import nanoplastImg from "../assets/images/nanoplast6.jpg";
+import kerabotoxImg from "../assets/images/kerabotox6.jpg";
+import hairSerumImg from "../assets/images/hairSerum.jpg";
+import prewaxImg from "../assets/images/prewax.jpg";
+import waxingImg from "../assets/images/waxing.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -10,7 +16,7 @@ const productsData = [
     title: "Advanced Keratin Shampoo",
     description: "Keratin formula that repairs and strengthens damaged hair. Premium quality ingredients for professional results.",
     price: "$29.99",
-    image: "./public/assets/keratin6.jpg",
+    image: keratinImg,
     backgroundColor: "bg-gradient-to-l from-amber-500 to-amber-900",
     accentColor: "from-[#161616] to-[#505050]",
     redirectLink: "https://truefriendsprofessional.myshopify.com/collections/keratin"
@@ -19,7 +25,7 @@ const productsData = [
     title: "Deep Nourishing Conditioner",
     description: "Premium conditioner with natural oils for silky results. Deeply moisturizes and repairs damaged hair for a healthy shine.",
     price: "$24.99",
-    image: "./public/assets/nanoplast6.jpg",
+    image: nanoplastImg,
     backgroundColor: "bg-gradient-to-l from-cyan-400 to-blue-100",
     accentColor: "from-[#2C3090] to-blue-600",
     redirectLink: "https://truefriendsprofessional.myshopify.com/collections/nanoplastia"
@@ -28,43 +34,37 @@ const productsData = [
     title: "Luxurious Hair Serum",
     description: "Hair serum with heat protection and brilliant shine. Advanced formula protects against styling damage while adding luminous shine.",
     price: "$34.99",
-    image: "./public/assets/kerabotox6.jpg",
+    image: kerabotoxImg,
     backgroundColor: "bg-gradient-to-l from-rose-500 to-rose-100",
     accentColor: "from-rose-400 to-rose-600",
     redirectLink: "https://truefriendsprofessional.myshopify.com/collections/kera-boto-x"
-  
   },
   {
     title: "Premium Hair Serum",
     description: "Professional-grade serum with argan oil and vitamin E. Nourishes and protects hair while providing exceptional shine and manageability.",
     price: "$39.99",
-    image: "./public/assets/hairSerum.jpg",
+    image: hairSerumImg,
     backgroundColor: "bg-gradient-to-l from-amber-300 to-amber-900",
     accentColor: "from-[#2CA5A6] to-[#1D64A8] ",
     redirectLink: "https://truefriendsprofessional.myshopify.com/collections/argan/products/argan-silky-shine-hair-serum"
-
-
   },
   {
     title: "Pre-Wax Treatment",
     description: "Styling treatment for hold and texture with natural movement. Prepares hair for styling while adding volume and texture.",
     price: "$27.99",
-    image: "./public/assets/prewax.jpg",
+    image: prewaxImg,
     backgroundColor: "bg-gradient-to-l from-red-400 to-emerald-100",
     accentColor: "from-emerald-400 to-emerald-600",
     redirectLink: "https://truefriendsprofessional.myshopify.com/collections/depilatory/products/aloe-vera-moisturizing-after-wax-lotion"
-
   },
   {
     title: "Professional Styling Wax",
     description: "Professional wax with strong hold and matte finish. Perfect for creating defined styles that last all day with a natural look.",
     price: "$32.99",
-    image: "./public/assets/waxing.jpg",
+    image: waxingImg,
     backgroundColor: "bg-gradient-to-l from-lime-500 to-purple-100",
     accentColor: "from-[#502A28] to-[#030D05]",
     redirectLink: "https://truefriendsprofessional.myshopify.com/collections/depilatory/products/white-chocolate-brazilian-wax"
-
-
   }
 ];
 

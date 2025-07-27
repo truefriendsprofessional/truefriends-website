@@ -75,4 +75,4 @@ const AnimatedBottle = ({ scale = 1, ...props }) => {
 
 export default AnimatedBottle;
 useGLTF.preload('/bottle_final_with_names.glb');
-useGLTF.preload('/bottle_final_with_names.glb');
+

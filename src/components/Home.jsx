@@ -4,7 +4,6 @@ import { useRef, Suspense, useState, useEffect } from 'react';
 import AnimatedBottle from './AnimatedBottle';
 import { Environment, OrbitControls } from "@react-three/drei";
 
-
 const Home = () => {
   const mainContentRef = useRef(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -21,7 +20,7 @@ const Home = () => {
     <div
       id='home'
       ref={mainContentRef}
-      className="relative w-full h-screen overflow-hidden bg-yellow-50 font-roboto pt-0"
+      className="relative w-full h-screen overflow-hidden bg-yellow-50 font-[roboto] pt-0"
       style={{
         background: 'linear-gradient(135deg, #f5f5f5 0%, #DADED0 100%)'
       }}
@@ -34,11 +33,10 @@ const Home = () => {
           {/* Large Background Title */}
           <div className="absolute inset-0 flex pt-35 justify-center">
             <div
-              className={`text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-[7rem] 2xl:text-[8rem] font-black text-gray-800 tracking-wider uppercase leading-none transform transition-all duration-1000 delay-300 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}
-              style={{
-                fontFamily: '"Orbitron", serif',
-                textShadow: '-10px 2px 4px rgba(0, 0, 0, 0.1)',
-              }}
+              className={`font-[Orbitron] text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-[7rem] 2xl:text-[8rem] font-black text-gray-800 tracking-wider uppercase leading-none transform transition-all duration-1000 delay-300 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}
+            style={{
+              textShadow: '-10px 2px 4px rgba(0, 0, 0, 0.1)',
+            }}
             >
               TRUE FRIENDS
               <br />
@@ -99,7 +97,7 @@ const Home = () => {
           <div className={`transform transition-all duration-1000 delay-900 z-10 relative ${isLoaded ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}>
             <div
               className="rounded-2xl p-6 shadow-2xl backdrop-blur-xl  bg-black/10 border border-white/40"
-             
+
             >
               <div className="space-y-4 relative">
                 {/* Minimal black icon at top left */}
@@ -143,7 +141,7 @@ const Home = () => {
                   style={{ filter: 'brightness(0.95) contrast(1.05) saturate(1.1)' }}
 
                 >
-                  <source src="public/assets/videos/logoFlash.mp4" type="video/mp4" />
+                  <source src="/assets/videos/logoFlash.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
 

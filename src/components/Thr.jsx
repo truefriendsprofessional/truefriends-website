@@ -29,22 +29,3 @@ export default function Thr() {
     </div>
   );
 }
-
-// import { Suspense } from 'react'
-// import { Canvas } from '@react-three/fiber'
-// import { Environment } from '@react-three/drei'
-
-// import Kerabotoxanimation from '../../public/Kerabotoxanimation'
-
-// export default function Thr() {
-//   return (
-//     <div className="App">
-//       <Canvas>
-//         <Suspense fallback={null}>
-//           <Kerabotoxanimation />
-//           <Environment preset="sunset" background />
-//         </Suspense>
-//       </Canvas>
-//     </div>
-//   )
-// }

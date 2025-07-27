@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import logo from '../assets/images/261.png';
 // Navigation data array
 const navigationData = [
   { id: 1, name: 'Home', href: '#home' },
@@ -56,7 +56,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           {/* Logo Section */}
           <div className="flex items-center">
-            <img src="/assets/261.png" alt="TrueFriends Logo" className="w-12 h-7 sm:w-11 sm:h-7 md:w-18 md:h-12" />
+            <img src={logo} alt="TrueFriends Logo" className="w-12 h-7 sm:w-11 sm:h-7 md:w-18 md:h-12" />
           </div>
 
           {/* Navigation Links - Center (Desktop) */}

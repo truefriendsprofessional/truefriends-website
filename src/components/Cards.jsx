@@ -130,15 +130,15 @@ const Card = ({ i, title, description, src, url, color, features }) => {
                 }`}
                 style={{ 
                   filter: 'brightness(0.95) contrast(1.05) saturate(1.1)',
-                  transform: 'translateZ(0)', // Hardware acceleration
-                  backfaceVisibility: 'hidden'
-                }}
-              >
-                <source src={`/assets/videos/${src}`} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-              
-              {/* Video overlay gradient */}
+                   // Hardware acceleration
+                            backfaceVisibility: 'hidden'
+                          }}
+                          >
+                          <source src={`/assets/videos/${src}`} type="video/mp4" />
+                          Your browser does not support the video tag.
+                          </video>
+                          
+                          {/* Video overlay gradient */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none"></div>
               
               {/* Performance hint overlay when not in view */}
