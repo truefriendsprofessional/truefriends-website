@@ -341,11 +341,11 @@ export default function Slide() {
       </div>
 
       {products.map((prod, idx) => (
-        <section key={prod.id} id={prod.id} className={`w-full h-screen flex flex-col md:flex-row ${prod.gradient} relative z-20 text-white`}>
+        <section key={prod.id} id={prod.id} className={`w-full h-[70vh] md:h-screen flex flex-col md:flex-row ${prod.gradient} relative z-20 text-white`}>
           {/* For section-2 (idx === 1), text should be on left, model on right */}
           {idx === 1 ? (
             <>
-              <div className="w-full md:w-1/2 h-1/2 md:h-full flex flex-col justify-center items-start px-4 md:px-8 lg:px-16 pt-16 md:pt-0">
+              <div className="w-full md:w-1/2 h-full md:h-full flex flex-col justify-center items-start px-4 md:px-8 lg:px-16 pt-32 md:pt-0">
                 <motion.div
                   initial="hidden"
                   whileInView="visible"
@@ -395,10 +395,10 @@ export default function Slide() {
             </>
           ) : (
             <>
-              <div className={`w-full md:w-1/2 h-1/2 md:h-full flex items-center justify-center order-2 md:order-1`}>
+              <div className={`w-full md:w-1/2 h-full md:h-full flex items-center justify-center order-2 md:order-1`}>
                 {/* 3D Model Space */}
               </div>
-              <div className="w-full md:w-1/2 h-1/2 md:h-full flex flex-col justify-center items-start px-4 md:px-8 lg:px-16 pt-16 md:pt-0 order-1 md:order-2">
+              <div className="w-full md:w-1/2 h-1/2 md:h-full flex flex-col justify-center items-start px-4 md:px-8 lg:px-16 pt-54 md:pt-0 order-1 md:order-2">
                 <motion.div
                   initial="hidden"
                   whileInView="visible"

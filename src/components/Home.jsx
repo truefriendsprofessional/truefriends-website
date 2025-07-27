@@ -34,9 +34,9 @@ const Home = () => {
           <div className="absolute inset-0 flex pt-35 justify-center">
             <div
               className={`font-[Orbitron] text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-[7rem] 2xl:text-[8rem] font-black text-gray-800 tracking-wider uppercase leading-none transform transition-all duration-1000 delay-300 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}
-            style={{
-              textShadow: '-10px 2px 4px rgba(0, 0, 0, 0.1)',
-            }}
+              style={{
+                textShadow: '-10px 2px 4px rgba(0, 0, 0, 0.1)',
+              }}
             >
               TRUE FRIENDS
               <br />
@@ -93,7 +93,7 @@ const Home = () => {
         </div>
 
         {/* Right Side Text - Glassmorphic Card */}
-        <div className="absolute right-4 bottom-4 md:right-10 md:bottom-32 max-w-xs z-20 w-auto px-4 md:px-0">
+        <div className="absolute bottom-8 w-full  md:right-10 md:bottom-20 md:max-w-xs z-20 md:w-auto p-4 md:px-0">
           <div className={`transform transition-all duration-1000 delay-900 z-10 relative ${isLoaded ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}>
             <div
               className="rounded-2xl p-6 shadow-2xl backdrop-blur-xl  bg-black/10 border border-white/40"
@@ -101,7 +101,7 @@ const Home = () => {
             >
               <div className="space-y-4 relative">
                 {/* Minimal black icon at top left */}
-                <div className="absolute -top-4 -left-4 bg-[#d2d2d2] rounded-full p-2  shadow-2xl flex items-center justify-center w-8 h-8 border border-white/10">
+                <div className="absolute  -top-4 -left-4 bg-[#d2d2d2] rounded-full p-2  shadow-2xl flex items-center justify-center w-8 h-8 border border-white/10">
                   {/* Sparkle icon (Heroicons outline, black) */}
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-black">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2.25M12 18.75V21M4.219 4.219l1.591 1.591M18.19 18.19l1.591 1.591M3 12h2.25M18.75 12H21M4.219 19.781l1.591-1.591M18.19 5.81l1.591-1.591M8.25 12a3.75 3.75 0 117.5 0 3.75 3.75 0 01-7.5 0z" />
@@ -110,10 +110,12 @@ const Home = () => {
                 <div className="text-right">
                   <div className="text-base font-black text-black mb-1 tracking-wide flex items-center gap-2 justify-end">
                     {/* We Set the Standard */}
-                    Our results speakes
+                    Professional hair care, trusted by stylists and loved by clients.
+                    <br />
                   </div>
+                  
                   <p className="text-sm text-gray-700 font-medium mt-1">
-                    We deliver professional hair care, so you can expect nothing less than excellence.
+                    Professional quality and personal touch together.
                   </p>
                 </div>
               </div>
@@ -122,7 +124,7 @@ const Home = () => {
         </div>
 
         {/* Left Side Description */}
-        <div className="absolute left-4 bottom-4 md:left-8 md:bottom-20 max-w-sm md:max-w-md hidden sm:block">
+        <div className="absolute left-4 bottom-4 md:left-8 md:bottom-20 max-w-sm md:max-w-md hidden md:block">
           <div className={`space-y-4 transform transition-all duration-1000 delay-1100 ${isLoaded ? 'translate-x-0 opacity-100' : 'translate-x-[-10px] opacity-0'}`}>
             <p className="text-gray-700  text-sm leading-relaxed">
               From intuitive formulas to seamless quality, True Friends products transform your hair care routine into a professional experience.

@@ -71,10 +71,10 @@ const Navbar = () => {
             <a
               href="https://truefriendsprofessional.myshopify.com/"
               target='_blank'
-              className="px-4 py-2 sm:px-6 bg-[#3FA6DA] text-[#FAFAFA] rounded-full hover:bg-[#EEC970] hover:text-[#161616] transition-all duration-300 text-xs sm:text-sm font-medium backdrop-blur-sm border border-[#EEC970]/30"
+              className="px-4 flex justify-center items-center py-2 sm:px-6 bg-[#3FA6DA] text-[#FAFAFA] rounded-full hover:bg-[#EEC970] hover:text-[#161616] transition-all duration-300 text-xs sm:text-sm font-medium backdrop-blur-sm border border-[#EEC970]/30"
             >
               <span className="hidden sm:inline">Visit Store</span>
-              <span className="sm:hidden">Store</span>
+              <span className="sm:hidden text-lg tracking-wider">Store</span>
             </a>
 
             {/* Mobile Menu Button */}

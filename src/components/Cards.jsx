@@ -5,8 +5,18 @@ import { useState, useRef, useEffect } from 'react';
 const Card = ({ i, title, description, src, url, color, features }) => {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [isInView, setIsInView] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const videoRef = useRef(null);
   const cardRef = useRef(null);
+
+  useEffect(() => {
+    // Check if mobile on mount and window resize
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -39,10 +49,10 @@ const Card = ({ i, title, description, src, url, color, features }) => {
   return (
     <div 
       ref={cardRef}
-      className={`${styles.card} stack-card mt-30 mb-[30vh] backdrop-blur-sm relative overflow-hidden transform-gpu`} 
+      className={`${styles.card} ${!isMobile ? 'stack-card' : ''} mt-30 mb-[30vh] backdrop-blur-sm relative overflow-hidden transform-gpu border-4 border-green-500`} 
       style={{ 
         background: color,
-        top: `calc(-5vh + ${25 * i}px)`,
+        top: !isMobile ? `calc(-5vh + ${25 * i}px)` : 'auto',
         boxShadow: '0 30px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(238, 201, 112, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
         border: '1px solid rgba(238, 201, 112, 0.3)',
         willChange: 'transform, opacity'

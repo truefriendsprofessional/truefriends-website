@@ -13,6 +13,25 @@
     overflow-x: hidden;
   }
   
+  /* Features section mobile fixes */
+  #features {
+    height: auto !important;
+    min-height: 100vh;
+    overflow-y: visible !important;
+    padding-bottom: 2rem;
+  }
+  
+  /* Mobile card layout improvements */
+  .stack-card {
+    position: relative !important;
+    transform: none !important;
+    top: auto !important;
+    left: auto !important;
+    margin: 1rem auto 2rem auto !important;
+    width: 95vw !important;
+    max-width: 400px !important;
+  }
+  
   /* Mobile typography improvements */
   h1 {
     font-size: 1.75rem !important;
@@ -20,7 +39,7 @@
   }
   
   h2 {
-    font-size: 1.5rem !important;
+    /* font-size: 1.5rem !important; */
     line-height: 1.3;
   }
   

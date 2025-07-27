@@ -44,8 +44,13 @@
   @media (max-width: 768px) {
     width: 95vw;
     max-width: 400px;
-    height: 400px !important;
+    height: 450px !important; // Increased height for mobile
     padding: 1.5rem;
+    position: relative !important; // Change to relative positioning on mobile
+    top: auto !important; // Reset top positioning
+    left: auto !important; // Reset left positioning
+    transform: none !important; // Reset transform on mobile
+    margin: 1rem auto; // Add margin for spacing
   }
   
   h2 {
@@ -160,6 +165,16 @@
   
   // Add smooth transitions for better UX
   transition: transform 0.1s ease-out;
+  
+  // Mobile layout adjustments
+  @media (max-width: 768px) {
+    position: relative !important; // Change to relative on mobile
+    left: auto !important;
+    transform: none !important;
+    display: block;
+    margin: 1rem auto 2rem auto; // Add spacing between cards
+    max-width: 95vw;
+  }
   
   // Optimize for touch devices
   @media (hover: none) and (pointer: coarse) {
