@@ -15,7 +15,7 @@ const productsData = [
   {
     title: "Advanced Keratin Shampoo",
     description: "Keratin formula that repairs and strengthens damaged hair. Premium quality ingredients for professional results.",
-    price: "$29.99",
+    price: "₹2275",
     image: keratinImg,
     backgroundColor: "bg-gradient-to-l from-amber-500 to-amber-900",
     accentColor: "from-[#161616] to-[#505050]",
@@ -24,7 +24,7 @@ const productsData = [
   {
     title: "Deep Nourishing Conditioner",
     description: "Premium conditioner with natural oils for silky results. Deeply moisturizes and repairs damaged hair for a healthy shine.",
-    price: "$24.99",
+    price: "₹3175",
     image: nanoplastImg,
     backgroundColor: "bg-gradient-to-l from-cyan-400 to-blue-100",
     accentColor: "from-[#2C3090] to-blue-600",
@@ -33,7 +33,7 @@ const productsData = [
   {
     title: "Luxurious Hair Serum",
     description: "Hair serum with heat protection and brilliant shine. Advanced formula protects against styling damage while adding luminous shine.",
-    price: "$34.99",
+    price: "₹4175",
     image: kerabotoxImg,
     backgroundColor: "bg-gradient-to-l from-rose-500 to-rose-100",
     accentColor: "from-rose-400 to-rose-600",
@@ -42,7 +42,7 @@ const productsData = [
   {
     title: "Premium Hair Serum",
     description: "Professional-grade serum with argan oil and vitamin E. Nourishes and protects hair while providing exceptional shine and manageability.",
-    price: "$39.99",
+    price: "₹1575",
     image: hairSerumImg,
     backgroundColor: "bg-gradient-to-l from-amber-300 to-amber-900",
     accentColor: "from-[#2CA5A6] to-[#1D64A8] ",
@@ -51,7 +51,7 @@ const productsData = [
   {
     title: "Pre-Wax Treatment",
     description: "Styling treatment for hold and texture with natural movement. Prepares hair for styling while adding volume and texture.",
-    price: "$27.99",
+    price: "₹725",
     image: prewaxImg,
     backgroundColor: "bg-gradient-to-l from-red-400 to-emerald-100",
     accentColor: "from-emerald-400 to-emerald-600",
@@ -60,7 +60,7 @@ const productsData = [
   {
     title: "Professional Styling Wax",
     description: "Professional wax with strong hold and matte finish. Perfect for creating defined styles that last all day with a natural look.",
-    price: "$32.99",
+    price: "₹1275",
     image: waxingImg,
     backgroundColor: "bg-gradient-to-l from-lime-500 to-purple-100",
     accentColor: "from-[#502A28] to-[#030D05]",
