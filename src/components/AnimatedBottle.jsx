@@ -32,8 +32,8 @@ const AnimatedBottle = ({ scale = 1, ...props }) => {
             </mesh>
 
             {/* Bottle model with floating animation */}
-            <Float speed={2} rotationIntensity={2} floatIntensity={3}>
-                <group ref={bottleRef} dispose={null} castShadow scale={scale}>
+            <Float speed={2} rotationIntensity={1} floatIntensity={3}>
+                <group ref={bottleRef} dispose={null} castShadow scale={scale} rotation={[0, Math.PI, 0]}>
                     {/* Always visible parts */}
                     <mesh
                         geometry={nodes.bottleBody.geometry}

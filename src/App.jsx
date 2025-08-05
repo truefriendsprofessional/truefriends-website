@@ -4,6 +4,7 @@ import "./responsive.css";
 import Contact from "./components/Contact";
 import Navbar from "./components/Navbar";
 import WhyUs from "./components/WhyUs";
+import VideoSection from "./components/VideoSection";
 import Offerings from "./components/Offerings";
 import Home from "./components/Home";
 import Features2 from "./components/Features2";
@@ -47,6 +48,7 @@ export default function App() {
       <div id="scroll-sections" className="relative z-10 pt-0 critical-section">
         <Home />
         <WhyUs />
+        <VideoSection />
         <Slide />
         <Features2 />
         <Offerings />

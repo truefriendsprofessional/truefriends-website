@@ -2,7 +2,7 @@
 import { Canvas } from '@react-three/fiber';
 import { useRef, Suspense, useState, useEffect } from 'react';
 import AnimatedBottle from './AnimatedBottle';
-import { Environment, OrbitControls } from "@react-three/drei";
+import { Environment, OrbitControls, Lightformer } from "@react-three/drei";
 
 const Home = () => {
   const mainContentRef = useRef(null);
@@ -82,7 +82,15 @@ const Home = () => {
                   shadow-mapSize-width={2048}
                   shadow-mapSize-height={2048}
                 />
-                <Environment preset="studio" environmentIntensity={0.3} />
+                {/* <Environment preset="studio" environmentIntensity={0.3} /> */}
+                <Environment preset='studio' environmentIntensity={0.3}>
+                  {/* <color attach="background" args={['black']} /> */}
+
+                  <Lightformer intensity={2} color="white" position={[0, -1, 5]} rotation={[0, 0, Math.PI / 3]} scale={[100, 0.1, 1]} />
+                  <Lightformer intensity={3} color="white" position={[-1, -1, 1]} rotation={[0, 0, Math.PI / 3]} scale={[100, 0.1, 1]} />
+                  <Lightformer intensity={3} color="white" position={[1, 1, 1]} rotation={[0, 0, Math.PI / 3]} scale={[100, 0.1, 1]} />
+                  <Lightformer intensity={5} color="white" position={[-10, 0, 14]} rotation={[0, Math.PI / 2, Math.PI / 3]} scale={[100, 10, 1]} />
+                </Environment>
                 <Suspense fallback={null}>
                   {/* <OrbitControls /> */}
                   <AnimatedBottle scale={0.25} />

@@ -168,7 +168,7 @@ function AnimatedBottle() {
           const sectionProgress = (progress - 0.6) * 5;
 
           // Reduce horizontal movement on mobile
-          const endX = isMobile ? 0.9 : 1.8;
+          const endX = isMobile ? 0.9 : -1.8;
           targetX = gsap.utils.interpolate(0, endX, sectionProgress);
           targetY = gsap.utils.interpolate(-0.2, -3.8, sectionProgress); // Move down much faster
           targetZ = gsap.utils.interpolate(7, -1.5, sectionProgress); // Final zoom out
@@ -179,7 +179,7 @@ function AnimatedBottle() {
         else {
           // remain in last section no change
           // Reduce horizontal movement on mobile
-          const finalX = isMobile ? 0.9 : 1.8;
+          const finalX = isMobile ? 0.9 : -1.8;
           targetX = finalX;
           targetY = -3.8;
           targetZ = -1.5;
@@ -340,7 +340,7 @@ export default function Slide() {
   return (
     <div ref={slideRef} id="model" className="w-full font-[Poppins,sans-serif] relative">
       <div className="absolute inset-0 z-30 pointer-events-none">
-        <div className="absolute top-4 md:top-6 left-1/2 transform -translate-x-1/2 pt-3 text-red-100 font-bold text-xl md:text-2xl text-center px-4">
+        <div className="absolute top-4 md:top-6 left-1/2 transform -translate-x-1/2 pt-3 text-red-100 font-bold text-xl md:text-2xl lg:text-4xl text-center px-4">
           Our Flagship Products
         </div>
         <Canvas camera={{ position: [0, 0, 10], fov: 50 }} shadows gl={{ alpha: true, antialias: true }}>

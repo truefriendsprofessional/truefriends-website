@@ -1,70 +1,70 @@
 import React from 'react'
 import { ThreeDMarquee } from './ui/3d-marquee';
-// Reviews data array
+// Reviews data array with Indian names
 const reviewsData = [
   {
     id: 1,
-    name: "Sarah Johnson",
-    location: "Beverly Hills Salon",
+    name: "Priya Sharma",
+    location: "Elite Hair Studio Mumbai",
     rating: 5,
     review: "Absolutely love these products! My clients' hair looks amazing and feels so soft after treatment.",
-    avatar: "src/assets/images/1.png"
+    avatar: "/assets/images/1.png"
   },
   {
     id: 2,
-    name: "Mike Chen",
-    location: "Urban Hair Studio",
+    name: "Rajesh Kumar",
+    location: "Modern Hair Salon Delhi",
     rating: 5,
     review: "Best hair care products I've used in my 15 years as a stylist. Highly recommend!",
-    avatar: "src/assets/images/5.png"
+    avatar: "/assets/images/5.png"
   },
   {
     id: 3,
-    name: "Emily Rodriguez",
-    location: "Luxe Hair Boutique",
+    name: "Sneha Patel",
+    location: "Luxe Hair Boutique Bangalore",
     rating: 5,
     review: "The keratin shampoo is a game-changer. My clients keep asking what I'm using!",
-    avatar: "src/assets/images/7.png"
+    avatar: "/assets/images/7.png"
   },
   {
     id: 4,
-    name: "David Thompson",
-    location: "Elite Hair Care",
+    name: "Arjun Singh",
+    location: "Premium Hair Care Pune",
     rating: 5,
     review: "Professional quality products that deliver consistent results every time.",
-    avatar: "src/assets/images/13.png"
+    avatar: "/assets/images/13.png"
   },
   {
     id: 5,
-    name: "Lisa Park",
-    location: "Modern Hair Gallery",
+    name: "Kavya Reddy",
+    location: "Glamour Hair Gallery Hyderabad",
     rating: 5,
     review: "My salon has seen a 30% increase in customer satisfaction since using these products.",
-    avatar: "src/assets/images/1.png"
+    avatar: "/assets/images/1.png"
   },
   {
     id: 6,
-    name: "James Wilson",
-    location: "Premier Salon",
+    name: "Vikram Joshi",
+    location: "Style Masters Chennai",
     rating: 5,
     review: "The styling wax gives perfect hold without making hair look greasy. Love it!",
-    avatar: "src/assets/images/5.png"
+    avatar: "/assets/images/5.png"
   },
   {
     id: 7,
-    name: "Amanda Foster",
-    location: "Trendy Cuts",
+    name: "Ananya Gupta",
+    location: "Trendy Cuts Kolkata",
     rating: 5,
     review: "Natural ingredients that actually work. My clients notice the difference immediately.",
-    avatar: "src/assets/images/7.png"
+    avatar: "/assets/images/7.png"
   },
   {
     id: 8,
-    name: "Robert Lee",
-    location: "Style Masters",
+    name: "Rohit Mehta",
+    location: "Urban Hair Studio Ahmedabad",
     rating: 5,
     review: "Excellent value for money. These products compete with the most expensive brands.",
-    avatar: "src/assets/images/13.png"
+    avatar: "/assets/images/13.png"
   }
 ];
 
