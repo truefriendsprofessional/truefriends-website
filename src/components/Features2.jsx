@@ -16,7 +16,7 @@ const FeatureCard = ({ project, index, isVisible }) => {
           videoRef.current.pause();
         }
       },
-      { threshold: 0.3, rootMargin: '50px' }
+      { threshold: 0.1, rootMargin: '50px' }
     );
 
     if (cardRef.current) {
@@ -173,9 +173,9 @@ const Features2 = () => {
         <h1 className="text-4xl lg:text-6xl font-bold text-[#EEC970] mb-6 tracking-wide drop-shadow-lg">
           Premium Hair Care Solutions
         </h1>
-        <p className="text-xl lg:text-2xl text-[#FAFAFA] opacity-90 max-w-3xl mx-auto leading-relaxed">
+        {/* <p className="text-xl lg:text-2xl text-[#FAFAFA] opacity-90 max-w-3xl mx-auto leading-relaxed">
           Discover our revolutionary formulas designed to transform your hair care routine
-        </p>
+        </p> */}
       </div>
 
       {/* Feature Cards */}

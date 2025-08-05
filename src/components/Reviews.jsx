@@ -7,64 +7,56 @@ const reviewsData = [
     name: "Priya Sharma",
     location: "Elite Hair Studio Mumbai",
     rating: 5,
-    review: "Absolutely love these products! My clients' hair looks amazing and feels so soft after treatment.",
-    avatar: "/assets/images/1.png"
+    review: "Absolutely love these products! My clients' hair looks amazing and feels so soft after treatment."
   },
   {
     id: 2,
     name: "Rajesh Kumar",
     location: "Modern Hair Salon Delhi",
     rating: 5,
-    review: "Best hair care products I've used in my 15 years as a stylist. Highly recommend!",
-    avatar: "/assets/images/5.png"
+    review: "Best hair care products I've used in my 15 years as a stylist. Highly recommend!"
   },
   {
     id: 3,
     name: "Sneha Patel",
     location: "Luxe Hair Boutique Bangalore",
     rating: 5,
-    review: "The keratin shampoo is a game-changer. My clients keep asking what I'm using!",
-    avatar: "/assets/images/7.png"
+    review: "The keratin shampoo is a game-changer. My clients keep asking what I'm using!"
   },
   {
     id: 4,
     name: "Arjun Singh",
     location: "Premium Hair Care Pune",
     rating: 5,
-    review: "Professional quality products that deliver consistent results every time.",
-    avatar: "/assets/images/13.png"
+    review: "Professional quality products that deliver consistent results every time."
   },
   {
     id: 5,
     name: "Kavya Reddy",
     location: "Glamour Hair Gallery Hyderabad",
     rating: 5,
-    review: "My salon has seen a 30% increase in customer satisfaction since using these products.",
-    avatar: "/assets/images/1.png"
+    review: "My salon has seen a 30% increase in customer satisfaction since using these products."
   },
   {
     id: 6,
     name: "Vikram Joshi",
     location: "Style Masters Chennai",
     rating: 5,
-    review: "The styling wax gives perfect hold without making hair look greasy. Love it!",
-    avatar: "/assets/images/5.png"
+    review: "The styling wax gives perfect hold without making hair look greasy. Love it!"
   },
   {
     id: 7,
     name: "Ananya Gupta",
     location: "Trendy Cuts Kolkata",
     rating: 5,
-    review: "Natural ingredients that actually work. My clients notice the difference immediately.",
-    avatar: "/assets/images/7.png"
+    review: "Natural ingredients that actually work. My clients notice the difference immediately."
   },
   {
     id: 8,
     name: "Rohit Mehta",
     location: "Urban Hair Studio Ahmedabad",
     rating: 5,
-    review: "Excellent value for money. These products compete with the most expensive brands.",
-    avatar: "/assets/images/13.png"
+    review: "Excellent value for money. These products compete with the most expensive brands."
   }
 ];
 
@@ -86,6 +78,41 @@ const StarRating = ({ rating }) => {
   );
 };
 
+// Function to get initials from name
+const getInitials = (name) => {
+  return name.split(' ').map(word => word[0]).join('').toUpperCase();
+};
+
+// Function to get random color based on name
+const getAvatarColor = (name) => {
+  const colors = [
+    'bg-gradient-to-br from-purple-500 to-pink-500',
+    'bg-gradient-to-br from-blue-500 to-cyan-500',
+    'bg-gradient-to-br from-green-500 to-emerald-500',
+    'bg-gradient-to-br from-orange-500 to-red-500',
+    'bg-gradient-to-br from-indigo-500 to-purple-500',
+    'bg-gradient-to-br from-rose-500 to-pink-500',
+    'bg-gradient-to-br from-teal-500 to-green-500',
+    'bg-gradient-to-br from-amber-500 to-orange-500'
+  ];
+  
+  // Use name length to get consistent color for same name
+  const index = name.length % colors.length;
+  return colors[index];
+};
+
+// Avatar Component
+const Avatar = ({ name }) => {
+  const initials = getInitials(name);
+  const colorClass = getAvatarColor(name);
+  
+  return (
+    <div className={`w-12 h-12 rounded-full ${colorClass} flex items-center justify-center text-white font-bold text-base border-2 border-[#EEC970] shadow-lg`}>
+      {initials}
+    </div>
+  );
+};
+
 // Review Card Component
 const ReviewCard = ({ review }) => {
   return (
@@ -93,12 +120,8 @@ const ReviewCard = ({ review }) => {
       className="flex-shrink-0 w-80 mx-4 p-6 rounded-2xl shadow-lg bg-[#FAFAFA] border-2 border-[#EEC970]/30"
     >
       <div className="flex items-center mb-4">
-        <img
-          src={review.avatar}
-          alt={review.name}
-          className="w-12 h-12 rounded-full object-cover mr-4 border-2 border-[#EEC970]"
-        />
-        <div>
+        <Avatar name={review.name} />
+        <div className="ml-4">
           <h4 className="font-bold text-lg" style={{ color: '#6B9080' }}>
             {review.name}
           </h4>
