@@ -23,7 +23,7 @@ const VideoSection = () => {
                                 playsInline
                                 preload="metadata"
                             >
-                                <source src="assets/videos/shampooFalling.mp4" type="video/mp4" />
+                                <source src="assets/videos/blast.mp4" type="video/mp4" />
                                 Your browser does not support the video tag.
                             </video>
 

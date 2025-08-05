@@ -13,26 +13,26 @@ gsap.registerPlugin(ScrollTrigger);
 // Products data array
 const productsData = [
   {
-    title: "Advanced Keratin Shampoo",
-    description: "Keratin formula that repairs and strengthens damaged hair. Premium quality ingredients for professional results.",
-    price: "₹2275",
+    title: "Keratin Treatment Shampoo Set",
+    description: "Unlock salon-grade transformation with our complete Keratin Treatment Shampoo Set. This 6-step system is expertly formulated to cleanse, repair, nourish, and protect your hair throughout every stage of the keratin treatment process. Each product works in synergy to deliver smoothness, strength, and lasting shine, ensuring flawless, professional results.",
+    price: "₹775",
     image: keratinImg,
     backgroundColor: "from-amber-500/20 to-amber-900/30",
     accentColor: "from-[#161616] to-[#505050]",
     redirectLink: "https://truefriendsprofessional.myshopify.com/collections/keratin"
   },
   {
-    title: "Deep Nourishing Conditioner",
-    description: "Premium conditioner with natural oils for silky results. Deeply moisturizes and repairs damaged hair for a healthy shine.",
-    price: "₹3175",
+    title: "Nanoplastia Treatment Shampoo Set",
+    description: "Experience advanced hair restoration with our Nanoplastia Treatment Shampoo Set. This comprehensive 6-step collection utilizes innovative nanoplastia technology to deeply hydrate, repair, and revitalize hair at every phase of the treatment. Achieve silky, manageable, and radiant hair with professional-grade care from start to finish.",
+    price: "₹775",
     image: nanoplastImg,
     backgroundColor: "from-cyan-400/20 to-blue-600/30",
     accentColor: "from-[#2C3090] to-blue-600",
     redirectLink: "https://truefriendsprofessional.myshopify.com/collections/nanoplastia"
   },
   {
-    title: "Luxurious Hair Serum",
-    description: "Hair serum with heat protection and brilliant shine. Advanced formula protects against styling damage while adding luminous shine.",
+    title: "Kerabotox Treatment Shampoo Set",
+    description: "Reveal your hair’s ultimate vitality with our Kerabotox Treatment Shampoo Set. This 6-step regimen is designed to deliver deep nourishment, rejuvenation, and protection at every stage of the kerabotox process. Enjoy smoother, stronger, and more luminous hair with a complete, professional treatment experience.",
     price: "₹4175",
     image: kerabotoxImg,
     backgroundColor: "from-rose-500/20 to-pink-600/30",
@@ -41,7 +41,7 @@ const productsData = [
   },
   {
     title: "Premium Hair Serum",
-    description: "Professional-grade serum with argan oil and vitamin E. Nourishes and protects hair while providing exceptional shine and manageability.",
+    description: "Elevate your hair care routine with our Premium Hair Serum, expertly crafted with argan oil and vitamin E. This lightweight, professional-grade serum nourishes, protects, and imparts exceptional shine and manageability for all hair types.",
     price: "₹1575",
     image: hairSerumImg,
     backgroundColor: "from-emerald-400/20 to-teal-600/30",
@@ -50,7 +50,7 @@ const productsData = [
   },
   {
     title: "Pre-Wax Treatment",
-    description: "Styling treatment for hold and texture with natural movement. Prepares hair for styling while adding volume and texture.",
+    description: "Prepare your hair for flawless styling with our Pre-Wax Treatment. Specially formulated to add volume, texture, and natural movement, it ensures optimal hold and enhances the effectiveness of your styling routine.",
     price: "₹725",
     image: prewaxImg,
     backgroundColor: "from-orange-400/20 to-red-500/30",
@@ -59,7 +59,7 @@ const productsData = [
   },
   {
     title: "Professional Styling Wax",
-    description: "Professional wax with strong hold and matte finish. Perfect for creating defined styles that last all day with a natural look.",
+    description: "Achieve long-lasting, defined styles with our Professional Styling Wax. Designed for strong hold and a natural matte finish, this premium wax delivers structure and control, keeping your look sharp and effortlessly sophisticated all day.",
     price: "₹1275",
     image: waxingImg,
     backgroundColor: "from-purple-500/20 to-indigo-600/30",
@@ -133,7 +133,7 @@ const ProductCard = ({ product }) => (
               
               <div className="flex items-center justify-between pt-6">
                 <div className="space-y-1">
-                  <span className="text-sm text-white/70 uppercase tracking-wider">Price</span>
+                  <span className="text-sm text-white/70 uppercase tracking-wider">Starting From</span>
                   <div className="text-3xl lg:text-4xl font-bold text-white">
                     {product.price}
                   </div>
@@ -153,6 +153,7 @@ const ProductCard = ({ product }) => (
       {/* Right side - Product Image */}
       <div className="w-1/2 h-full flex items-center justify-center ">
         <div className="relative w-full group">
+          {/* Enhanced glow effect */}
           {/* Enhanced glow effect */}
           <div className="absolute -inset-4 bg-gradient-to-r from-white/20 via-white/10 to-white/20 rounded-3xl blur-xl opacity-60 group-hover:opacity-100 transition duration-700"></div>
           

@@ -1,6 +1,6 @@
 import { projects } from "../data"
 import { useEffect, useRef, useMemo, useState } from "react";
-import background from '../assets/images/dark.jpg';
+import background from '../assets/images/backLight.jpg';
 
 const FeatureCard = ({ project, index, isVisible }) => {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
