@@ -27,7 +27,7 @@ const NavLink = ({ item, onClick }) => {
   };
 
   return (
-    <li className="w-full">
+    <div className="w-full">
       <a
         href={item.href}
         onClick={handleClick}
@@ -35,7 +35,7 @@ const NavLink = ({ item, onClick }) => {
       >
         {item.name}
       </a>
-    </li>
+    </div>
   );
 };
 
@@ -81,7 +81,7 @@ const Navbar = () => {
             {/* Mobile Menu Button */}
             <button 
               onClick={toggleMenu}
-              className="md:hidden text-white hover:text-[#EEC970] p-1 transition-colors"
+              className="md:hidden text-white hover:text-[#EEC970] pl-6 transition-colors"
               aria-label="Toggle menu"
             >
               {isMenuOpen ? (
