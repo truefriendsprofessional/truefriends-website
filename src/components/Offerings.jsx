@@ -86,7 +86,7 @@ const ProductCard = ({ product }) => (
             <img
               src={product.image}
               alt={product.title}
-              className="w-full h-48 object-contain rounded-xl group-hover:scale-105 transition-transform duration-500"
+              className="w-full h-5 object-contain rounded-xl group-hover:scale-105 transition-transform duration-500"
             />
           </div>
         </div>
@@ -175,6 +175,56 @@ const ProductCard = ({ product }) => (
   </div>
 );
 
+// Glassmorphic Product Card for Grid Layout
+const GlassmorphicProductCard = ({ product }) => (
+  <div className={`relative rounded-2xl overflow-hidden bg-gradient-to-br ${product.backgroundColor} backdrop-blur-xl border border-white/20 shadow-2xl group hover:scale-105 transition-all duration-500`}>
+    {/* Animated background effects */}
+    <div className="absolute inset-0 opacity-40">
+      <div className="absolute top-4 right-4 w-20 h-20 bg-white/10 rounded-full blur-2xl animate-pulse"></div>
+      <div className="absolute bottom-4 left-4 w-16 h-16 bg-white/5 rounded-full blur-xl animate-bounce"></div>
+    </div>
+    
+    <div className="relative z-10 p-6 h-full flex flex-col">
+      {/* Product Image */}
+      <div className="relative mb-4 group-hover:scale-105 transition-transform duration-500">
+        <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 border border-white/20">
+          <img
+            src={product.image}
+            alt={product.title}
+            className="w-full h-52 object-contain rounded-lg"
+          />
+        </div>
+      </div>
+      
+      {/* Product Content */}
+      <div className="flex-1 flex flex-col justify-between">
+        <div className="space-y-3">
+          <h3 className="text-lg font-bold text-white font-[Orbitron] leading-tight">
+            {product.title}
+          </h3>
+          <p className="text-sm text-white/80 leading-relaxed overflow-hidden" style={{
+            display: '-webkit-box',
+            WebkitLineClamp: 3,
+            WebkitBoxOrient: 'vertical'
+          }}>
+            {product.description}
+          </p>
+        </div>
+        
+        <div className="flex items-center justify-between pt-4 mt-auto">
+          <span className="text-xl font-bold text-white">{product.price}</span>
+          <button
+            onClick={() => window.open(product.redirectLink, "_blank")}
+            className={`px-4 py-2 bg-gradient-to-r ${product.accentColor} text-white rounded-full font-semibold text-xs uppercase tracking-wider transition-all hover:scale-105 hover:shadow-lg cursor-pointer`}
+          >
+            Buy Now
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
 const Offerings = () => {
   const sectionRef = useRef(null);
   const cardsContainerRef = useRef(null);
@@ -191,44 +241,56 @@ const Offerings = () => {
       }
     });
 
-    const ctx = gsap.context(() => {
-      const totalProducts = productsData.length;
-      const cardWidth = window.innerWidth;
-      const totalWidth = cardWidth * (totalProducts - 1); // Fix: subtract 1 to prevent extra space
+    // Only apply horizontal scroll for desktop (md and above)
+    const mediaQuery = window.matchMedia('(min-width: 768px)');
+    
+    const handleResize = () => {
+      if (mediaQuery.matches) {
+        // Desktop: horizontal scroll
+        const ctx = gsap.context(() => {
+          const totalProducts = productsData.length;
+          const cardWidth = window.innerWidth;
+          const totalWidth = cardWidth * (totalProducts - 1);
 
-      // Create horizontal scroll animation
-      gsap.to(cardsContainer, {
-        x: -totalWidth,
-        ease: "none",
-        scrollTrigger: {
-          trigger: container,
-          start: "top top",
-          end: `+=${totalWidth}`,
-          pin: true,
-          scrub: 1,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-          id: "offerings-horizontal"
-        }
-      });
+          gsap.to(cardsContainer, {
+            x: -totalWidth,
+            ease: "none",
+            scrollTrigger: {
+              trigger: container,
+              start: "top top",
+              end: `+=${totalWidth}`,
+              pin: true,
+              scrub: 1,
+              anticipatePin: 1,
+              invalidateOnRefresh: true,
+              id: "offerings-horizontal"
+            }
+          });
+        }, sectionRef);
 
-      console.log("Horizontal scroll initialized");
-    }, sectionRef);
+        return () => ctx.revert();
+      }
+    };
 
-    return () => ctx.revert();
+    handleResize();
+    mediaQuery.addEventListener('change', handleResize);
+
+    return () => {
+      mediaQuery.removeEventListener('change', handleResize);
+    };
   }, []);
 
   return (
     <section
       id="offerings"
       ref={sectionRef}
-      className="relative h-screen w-full bg-gradient-to-br from-fuchsia-950 via-fuchsia-300 to-pink-950 overflow-hidden"
+      className="relative w-full bg-gradient-to-br from-fuchsia-950 via-fuchsia-300 to-pink-950 overflow-hidden md:h-screen"
       style={{
         fontFamily: "'Roboto','Poppins', 'Segoe UI', Arial, sans-serif",
       }}
     >
       {/* Header */}
-      <div className="absolute top-0 left-0 right-0 z-10 text-center pt-8 md:pt-20 bg-amber-300">
+      <div className="relative z-10 text-center pt-8 md:pt-20 pb-8 md:pb-0 md:absolute md:top-0 md:left-0 md:right-0 bg-amber-300 md:bg-transparent">
         <div className="max-w-3xl mx-auto px-4">
           <h2 className="text-3xl md:text-5xl font-bold mb-3 md:mb-5 bg-gradient-to-r from-[#161616] to-[#7b5b33] bg-clip-text text-transparent">
             Our Hair Care Products
@@ -236,8 +298,17 @@ const Offerings = () => {
         </div>
       </div>
 
-      {/* Horizontal Scrolling Cards Container */}
-      <div className="w-full h-full pt-20 md:pt-24">
+      {/* Mobile/Tablet: Grid Layout */}
+      <div className="md:hidden px-4 pb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-6xl mx-auto">
+          {productsData.map((product, index) => (
+            <GlassmorphicProductCard key={index} product={product} />
+          ))}
+        </div>
+      </div>
+
+      {/* Desktop: Horizontal Scrolling Cards Container */}
+      <div className="hidden md:block w-full h-full pt-24">
         <div 
           ref={cardsContainerRef}
           className="flex h-full"
