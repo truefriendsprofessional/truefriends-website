@@ -33,7 +33,7 @@ const FeatureCard = ({ project, index, isVisible }) => {
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
       }`}
       style={{ 
-        transitionDelay: `${index * 200}ms`,
+        transitionDelay: `${index * 10}ms`,
         fontFamily: "'Roboto', 'Poppins', 'Segoe UI', Arial, sans-serif"
       }}
     >
