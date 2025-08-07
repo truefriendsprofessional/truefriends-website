@@ -99,8 +99,7 @@ const ProductCard = ({ product }) => (
           <p className="text-sm text-white/90 leading-relaxed">
             {product.description}
           </p>
-          <div className="flex items-center justify-between pt-4">
-            <span className="text-2xl font-bold text-white">{product.price}</span>
+          <div className="flex justify-center pt-4">
             <button
               onClick={() => window.open(product.redirectLink, "_blank")}
               className={`px-6 py-3 bg-gradient-to-r ${product.accentColor} text-white rounded-full font-semibold text-xs uppercase tracking-wider transition-all hover:scale-105 hover:shadow-lg cursor-pointer`}
@@ -131,13 +130,7 @@ const ProductCard = ({ product }) => (
                 {product.description}
               </p>
               
-              <div className="flex items-center justify-between pt-6">
-                <div className="space-y-1">
-                  <span className="text-sm text-white/70 uppercase tracking-wider">Starting From</span>
-                  <div className="text-3xl lg:text-4xl font-bold text-white">
-                    {product.price}
-                  </div>
-                </div>
+              <div className="flex justify-center pt-6">
                 <button
                   onClick={() => window.open(product.redirectLink, "_blank")}
                   className={`px-8 py-4 bg-gradient-to-r ${product.accentColor} text-white rounded-full cursor-pointer font-semibold text-sm uppercase tracking-wider transition-all hover:scale-105 hover:shadow-xl transform`}
@@ -186,12 +179,12 @@ const GlassmorphicProductCard = ({ product }) => (
     
     <div className="relative z-10 p-6 h-full flex flex-col">
       {/* Product Image */}
-      <div className="relative mb-4 group-hover:scale-105 transition-transform duration-500">
+      <div className="relative mb-4 ">
         <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 border border-white/20">
           <img
             src={product.image}
             alt={product.title}
-            className="w-full h-52 object-contain rounded-lg"
+            className="w-full h-52 object-contain rounded-xl group-hover:scale-105 transition-transform duration-500"
           />
         </div>
       </div>
@@ -211,8 +204,7 @@ const GlassmorphicProductCard = ({ product }) => (
           </p>
         </div>
         
-        <div className="flex items-center justify-between pt-4 mt-auto">
-          <span className="text-xl font-bold text-white">{product.price}</span>
+        <div className="flex justify-center pt-4 mt-auto">
           <button
             onClick={() => window.open(product.redirectLink, "_blank")}
             className={`px-4 py-2 bg-gradient-to-r ${product.accentColor} text-white rounded-full font-semibold text-xs uppercase tracking-wider transition-all hover:scale-105 hover:shadow-lg cursor-pointer`}
@@ -290,9 +282,9 @@ const Offerings = () => {
       }}
     >
       {/* Header */}
-      <div className="relative z-10 text-center pt-8 md:pt-20 pb-8 md:pb-0 md:absolute md:top-0 md:left-0 md:right-0 bg-amber-300 md:bg-transparent">
-        <div className="max-w-3xl mx-auto px-4">
-          <h2 className="text-3xl md:text-5xl font-bold mb-3 md:mb-5 bg-gradient-to-r from-[#161616] to-[#7b5b33] bg-clip-text text-transparent">
+      <div className="relative z-10 text-center pt-8 md:pt-16 pb-8 md:pb-0 md:absolute md:top-0 md:left-0 md:right-0 bg-amber-300 md:bg-transparent">
+        <div className=" mx-auto px-4 bg-amber-300 rounded w-full">
+          <h2 className="text-3xl md:text-5xl font-bold mb-3 md:mb-5 bg-gradient-to-r from-[#161616] to-[#7b5b33]  bg-clip-text text-transparent">
             Our Hair Care Products
           </h2>
         </div>

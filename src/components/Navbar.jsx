@@ -67,28 +67,29 @@ const Navbar = () => {
           </ul>
 
           {/* Buy Now Button and Mobile Menu - Right */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center gap-1">
             <a
-              href="https://truefriendsprofessional.myshopify.com/"
+              href="https://shop.truefriendsprofessional.com/"
               target='_blank'
-              className="px-4 flex justify-center items-center py-2 sm:px-6 bg-[#3FA6DA] text-[#FAFAFA] rounded-full hover:bg-[#EEC970] hover:text-[#161616] transition-all duration-300 text-xs sm:text-sm font-medium backdrop-blur-sm border border-[#EEC970]/30"
+              className="px-3  py-2 sm:px-6 sm:py-2 md:px-4 md:py-2 inline-flex justify-center items-center bg-[#fd2525] text-[#FAFAFA] rounded-full hover:bg-[#EEC970] hover:text-[#161616] transition-all duration-300 text-xs sm:text-sm font-medium backdrop-blur-sm border border-[#EEC970]/30 !min-h-0"
+              style={{ minHeight: 'auto' }}
             >
               <span className="hidden sm:inline">Visit Store</span>
-              <span className="sm:hidden text-lg tracking-wider">Store</span>
+              <span className="sm:hidden text-xs tracking-wider">Buy Now</span>
             </a>
 
             {/* Mobile Menu Button */}
             <button 
               onClick={toggleMenu}
-              className="md:hidden text-white hover:text-[#EEC970] p-2 transition-colors"
+              className="md:hidden text-white hover:text-[#EEC970] p-1 transition-colors"
               aria-label="Toggle menu"
             >
               {isMenuOpen ? (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               ) : (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
               )}
