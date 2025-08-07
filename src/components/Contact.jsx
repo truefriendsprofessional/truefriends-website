@@ -131,7 +131,7 @@ const Contact = () => {
                         href="mailto:sales@truefriendspro.com"
                         className="hover:underline text-[#3FA6DA]"
                       >
-                        sales@truefriendspro.com
+                        abtruefriendsprofessional@gmail.com
                       </a>
                     </span>
                   </div>
@@ -141,10 +141,10 @@ const Contact = () => {
                     </svg>
                     <span className="text-[#FAFAFA]">
                       <a
-                        href="tel:+911234567890"
+                        href="tel:+919220151200"
                         className="hover:underline text-[#3FA6DA]"
                       >
-                        +91 12345 67890
+                        +91 92201 51200
                       </a>
                     </span>
                   </div>
