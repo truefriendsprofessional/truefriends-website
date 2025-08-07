@@ -161,7 +161,7 @@ const Home = () => {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-0 right-1/2 transform -translate-x-1/2 z-50">
+        <div className="hidden md:block absolute bottom-0 right-1/2 transform -translate-x-1/2 z-50">
           <div className={`flex flex-col items-center space-y-2 transform transition-all duration-1000 delay-1300 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
             <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center">
               <div className="w-1 h-3 bg-gray-400 rounded-full mt-2 animate-bounce"></div>
